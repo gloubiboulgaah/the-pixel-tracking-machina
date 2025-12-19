@@ -1,9 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     /* config options here */
-    reactCompiler: false, // Désactivé pour économiser la mémoire
+    reactCompiler: false,
     experimental: {
-        webpackMemoryOptimizations: true, // Optimisation mémoire
+        webpackMemoryOptimizations: true,
+    },
+    // Optimisations mémoire agressives
+    swcMinify: true,
+    compiler: {
+        removeConsole: process.env.NODE_ENV === 'production',
+    },
+    webpack: (config, { isServer }) => {
+        // Réduire l'utilisation mémoire de webpack
+        config.optimization = {
+            ...config.optimization,
+            minimize: true,
+        };
+        // Désactiver le cache si problème mémoire
+        config.cache = false;
+        return config;
     },
 };
 
