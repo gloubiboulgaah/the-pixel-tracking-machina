@@ -2,19 +2,11 @@
 const nextConfig = {
     reactStrictMode: false,
 
-    // ⚠️ PAS d'optimisations agressives sur mutualisé
-    experimental: {
-        webpackMemoryOptimizations: false,
-    },
+    // Config vide pour Turbopack (Next.js 16+)
+    turbopack: {},
 
     compiler: {
         removeConsole: process.env.NODE_ENV === "production",
-    },
-
-    webpack: (config) => {
-        // 🔥 TRÈS IMPORTANT : laisser webpack tranquille
-        config.cache = false;
-        return config;
     },
 };
 
