@@ -4,8 +4,9 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "NODE_OPTIONS='--max-old-space-size=2048' next build --turbopack",
+        "build": "NODE_OPTIONS='--max-old-space-size=2048' next build",
         "start": "next start",
+        "startport": "next start -p $PORT -H 0.0.0.0",
         "lint": "eslint"
     },
     "dependencies": {
